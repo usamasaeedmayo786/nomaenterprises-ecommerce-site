@@ -328,16 +328,32 @@ const PORTFOLIO_ITEMS = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Mobile menu toggle
+  // Mobile menu toggle (with auto-close on link click & outside click)
   const menuBtn = document.getElementById("mobileMenuBtn");
   const mainNav = document.getElementById("mainNav");
   if (menuBtn && mainNav) {
-    menuBtn.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = mainNav.classList.toggle("open");
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!mainNav.contains(e.target) && e.target !== menuBtn) {
+        mainNav.classList.remove("open");
+        menuBtn.textContent = "☰";
+      }
     });
   }
 
-  // Hero Proof Console Switcher
+  // Hero Proof Console Switcher with Crossfade Animation
   const consoleTabs = document.querySelectorAll(".console-tab");
   if (consoleTabs.length > 0) {
     consoleTabs.forEach((tab) => {
@@ -347,6 +363,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const key = tab.getAttribute("data-console");
         const data = HERO_CONSOLE_DATA[key];
         if (!data) return;
+
+        const consoleBody = document.querySelector(".console-body");
+        if (consoleBody) {
+          consoleBody.classList.remove("console-fade");
+          void consoleBody.offsetWidth; // trigger reflow
+          consoleBody.classList.add("console-fade");
+        }
 
         document.getElementById("consoleTitle").textContent = data.title;
         document.getElementById("consoleM1Label").textContent = data.metric1Label;
@@ -367,6 +390,47 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("consolePeriod").textContent = data.period;
         document.getElementById("consoleTrace").textContent = data.traceNote;
       });
+    });
+  }
+
+  // Scroll-Reveal Animation Observer for Sections & Cards
+  const animatedSelectors = [
+    ".hero-copy",
+    ".proof-console",
+    ".section-header-split",
+    ".heritage-card",
+    ".service-cell",
+    ".proof-card",
+    ".review-card",
+    ".protocol-step",
+    ".blog-card",
+    ".calculator-box",
+    ".comparison-table-wrap",
+    ".faq-item",
+    ".contact-info-card"
+  ];
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+  );
+
+  function initScrollReveal() {
+    document.querySelectorAll(animatedSelectors.join(",")).forEach((el, idx) => {
+      if (!el.classList.contains("reveal-up")) {
+        el.classList.add("reveal-up");
+        const delayMod = idx % 3;
+        if (delayMod === 1) el.classList.add("reveal-delay-1");
+        if (delayMod === 2) el.classList.add("reveal-delay-2");
+        revealObserver.observe(el);
+      }
     });
   }
 
@@ -421,6 +485,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .join("");
 
       bindLightboxTriggers();
+  initScrollReveal();
+      initScrollReveal();
     }
 
     renderProofCards("all");
@@ -458,6 +524,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   bindLightboxTriggers();
+  initScrollReveal();
 
   if (lightboxClose && lightboxModal) {
     lightboxClose.addEventListener("click", () => {
