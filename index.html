@@ -833,9 +833,9 @@
             <div class="contact-info-card">
               <div class="contact-info-icon">✉</div>
               <div>
-                <div class="contact-info-label">Corporate Email Desk</div>
-                <div class="contact-info-value">partners@nomaenterprises.com</div>
-                <div class="contact-info-sub">General Inquiries: hello@nomaenterprises.com</div>
+                <div class="contact-info-label">Executive &amp; Partner Email Desk</div>
+                <div class="contact-info-value"><a href="mailto:ceo@nomaenterprisesinc.com">ceo@nomaenterprisesinc.com</a></div>
+                <div class="contact-info-sub">Direct line to Noma Enterprises Inc. Leadership</div>
               </div>
             </div>
 
@@ -861,37 +861,42 @@
 
         <div style="background:var(--bg-card-light); border:1px solid var(--border-light-strong); padding:38px; border-radius:var(--radius-md); box-shadow:var(--shadow-md);">
           <div class="mono-tag" style="color:var(--accent-klein); margin-bottom:18px;">FREE STRATEGY &amp; SOURCING CONSULTATION</div>
-          <form class="noma-audit-form">
+          <form class="noma-audit-form" action="https://formsubmit.co/ceo@nomaenterprisesinc.com" method="POST">
+            <input type="hidden" name="_subject" value="New Strategy Call & Store Audit Request — Noma Enterprises Inc." />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" />
             <div class="form-grid">
               <div class="form-group">
                 <label class="form-label">Full Name *</label>
-                <input type="text" class="form-input" placeholder="e.g. Alexander Vance" required />
+                <input type="text" name="Full_Name" class="form-input" placeholder="e.g. Alexander Vance" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Work Email *</label>
-                <input type="email" class="form-input" placeholder="alex@yourcompany.com" required />
+                <input type="email" name="Email" class="form-input" placeholder="alex@yourcompany.com" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Direct Phone / WhatsApp *</label>
-                <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" required />
+                <input type="tel" name="Phone_WhatsApp" class="form-input" placeholder="+1 (555) 000-0000" required />
               </div>
               <div class="form-group">
                 <label class="form-label">What Are You Looking For?</label>
-                <select class="form-select">
-                  <option>Amazon FBA + Sourcing / Noma’s Own Products</option>
-                  <option>Scale Existing Amazon / Walmart Store</option>
-                  <option>Product Hunting &amp; Private Label Launch</option>
-                  <option>Multi-Channel Expansion (Walmart / Newegg / Best Buy)</option>
+                <select name="Service_Interest" class="form-select">
+                  <option value="Amazon FBA + Sourcing / Noma's Own Products">Amazon FBA + Sourcing / Noma’s Own Products</option>
+                  <option value="Scale Existing Amazon / Walmart Store">Scale Existing Amazon / Walmart Store</option>
+                  <option value="Product Hunting & Private Label Launch">Product Hunting &amp; Private Label Launch</option>
+                  <option value="Multi-Channel Expansion (Walmart / Newegg / Best Buy)">Multi-Channel Expansion (Walmart / Newegg / Best Buy)</option>
                 </select>
               </div>
               <div class="form-group full">
                 <label class="form-label">Target Marketplaces &amp; Current Monthly Sales (Or Budget)</label>
-                <textarea class="form-textarea" rows="3" placeholder="Tell us which marketplaces you want to focus on and whether you need product hunting, our in-house products, or full FBA management..."></textarea>
+                <textarea name="Project_Details" class="form-textarea" rows="3" placeholder="Tell us which marketplaces you want to focus on and whether you need product hunting, our in-house products, or full FBA management..." required></textarea>
               </div>
               <div class="form-group full">
                 <button type="submit" class="btn btn-klein btn-lg" style="width:100%;">Request Free Strategy Call →</button>
               </div>
             </div>
+            <div class="form-status-msg" style="display:none; margin-top:16px; padding:14px 18px; border-radius:10px; font-weight:600; font-size:0.9rem;"></div>
           </form>
         </div>
       </div>

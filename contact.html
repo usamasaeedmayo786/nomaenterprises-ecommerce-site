@@ -83,9 +83,9 @@
             <div class="contact-info-card">
               <div class="contact-info-icon">✉</div>
               <div>
-                <div class="contact-info-label">Corporate Email Desk</div>
-                <div class="contact-info-value">partners@nomaenterprises.com</div>
-                <div class="contact-info-sub">General Inquiries: hello@nomaenterprises.com</div>
+                <div class="contact-info-label">Executive &amp; Partner Email Desk</div>
+                <div class="contact-info-value"><a href="mailto:ceo@nomaenterprisesinc.com">ceo@nomaenterprisesinc.com</a></div>
+                <div class="contact-info-sub">Direct line to Noma Enterprises Inc. Leadership</div>
               </div>
             </div>
 
@@ -112,49 +112,54 @@
         <!-- Right Column: Clean Executive Intake Form -->
         <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); padding: 40px; border-radius: var(--radius-md); box-shadow: var(--shadow-md);">
           <div class="mono-tag" style="color: var(--brand-primary); margin-bottom: 20px;">Free Strategy &amp; Sourcing Application • 4-Hour Response</div>
-          <form class="noma-audit-form">
+          <form class="noma-audit-form" action="https://formsubmit.co/ceo@nomaenterprisesinc.com" method="POST">
+            <input type="hidden" name="_subject" value="New Strategy Call & Store Audit Application — Noma Enterprises Inc." />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" />
             <div class="form-grid">
               <div class="form-group">
                 <label class="form-label">Your Full Name *</label>
-                <input type="text" class="form-input" placeholder="e.g. Jordan Mercer" required />
+                <input type="text" name="Full_Name" class="form-input" placeholder="e.g. Jordan Mercer" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Company / Store Name</label>
-                <input type="text" class="form-input" placeholder="e.g. Mercer Retail LLC" />
+                <input type="text" name="Company_Name" class="form-input" placeholder="e.g. Mercer Retail LLC" />
               </div>
               <div class="form-group">
                 <label class="form-label">Work Email *</label>
-                <input type="email" class="form-input" placeholder="jordan@company.com" required />
+                <input type="email" name="Email" class="form-input" placeholder="jordan@company.com" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Direct Phone / WhatsApp *</label>
-                <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" required />
+                <input type="tel" name="Phone_WhatsApp" class="form-input" placeholder="+1 (555) 000-0000" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Primary Interest</label>
-                <select class="form-select">
-                  <option>Amazon FBA + Sourcing / Noma’s Own Products</option>
-                  <option>Scale Existing Brand &amp; Lower Ad Spend</option>
-                  <option>Product Hunting &amp; Private Label Launch</option>
-                  <option>Multi-Channel Expansion (Walmart / Newegg / Best Buy)</option>
+                <select name="Service_Interest" class="form-select">
+                  <option value="Amazon FBA + Sourcing / Noma's Own Products">Amazon FBA + Sourcing / Noma’s Own Products</option>
+                  <option value="Scale Existing Brand & Lower Ad Spend">Scale Existing Brand &amp; Lower Ad Spend</option>
+                  <option value="Product Hunting & Private Label Launch">Product Hunting &amp; Private Label Launch</option>
+                  <option value="Multi-Channel Expansion (Walmart / Newegg / Best Buy)">Multi-Channel Expansion (Walmart / Newegg / Best Buy)</option>
                 </select>
               </div>
               <div class="form-group">
                 <label class="form-label">Monthly Sales or Starting Inventory Budget</label>
-                <select class="form-select">
-                  <option>$10,000 – $35,000 Allocation</option>
-                  <option>$35,000 – $100,000 Allocation</option>
-                  <option>$100,000 – $500,000+ Enterprise</option>
+                <select name="Budget_Allocation" class="form-select">
+                  <option value="$10,000 – $35,000 Allocation">$10,000 – $35,000 Allocation</option>
+                  <option value="$35,000 – $100,000 Allocation">$35,000 – $100,000 Allocation</option>
+                  <option value="$100,000 – $500,000+ Enterprise">$100,000 – $500,000+ Enterprise</option>
                 </select>
               </div>
               <div class="form-group full">
                 <label class="form-label">How Can Our Sourcing &amp; FBA Team Help You?</label>
-                <textarea class="form-textarea" rows="4" placeholder="Tell us which marketplaces (Amazon FBA, Walmart WFS, Newegg, Best Buy, Shopify, TikTok Shop, SHEIN) you want to focus on, or ask about our in-house product catalog..."></textarea>
+                <textarea name="Project_Details" class="form-textarea" rows="4" placeholder="Tell us which marketplaces (Amazon FBA, Walmart WFS, Newegg, Best Buy, Shopify, TikTok Shop, SHEIN) you want to focus on, or ask about our in-house product catalog..." required></textarea>
               </div>
               <div class="form-group full">
                 <button type="submit" class="btn btn-klein btn-lg" style="width: 100%;">Request Free Strategy Call →</button>
               </div>
             </div>
+            <div class="form-status-msg" style="display:none; margin-top:16px; padding:14px 18px; border-radius:10px; font-weight:600; font-size:0.9rem;"></div>
           </form>
         </div>
       </div>

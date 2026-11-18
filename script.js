@@ -532,22 +532,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Contact / Audit Form Submission Feedback
+  // Live Contact & Strategy Form Submission to ceo@nomaenterprisesinc.com via FormSubmit AJAX
   const auditForms = document.querySelectorAll(".noma-audit-form");
   auditForms.forEach((form) => {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = form.querySelector("button[type='submit']");
+      const statusBox = form.querySelector(".form-status-msg");
       const originalText = btn.innerHTML;
-      btn.innerHTML = "✓ AUDIT BRIEF DISPATCHED — OUR PARTNERS WILL RESPOND WITHIN 4 HRS";
-      btn.style.backgroundColor = "#0E9F6E";
-      btn.style.borderColor = "#0E9F6E";
-      form.reset();
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.backgroundColor = "";
-        btn.style.borderColor = "";
-      }, 6000);
+
+      btn.disabled = true;
+      btn.innerHTML = "Sending Your Request...";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/ceo@nomaenterprisesinc.com", {
+          method: "POST",
+          headers: {
+            Accept: "application/json"
+          },
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          btn.innerHTML = "✓ Inquiry Sent Successfully!";
+          btn.style.background = "#059669";
+          btn.style.borderColor = "#059669";
+          if (statusBox) {
+            statusBox.style.display = "block";
+            statusBox.style.background = "rgba(5, 150, 105, 0.1)";
+            statusBox.style.color = "#059669";
+            statusBox.style.border = "1px solid rgba(5, 150, 105, 0.3)";
+            statusBox.textContent =
+              "✓ Thank you! Your strategy request has been sent directly to ceo@nomaenterprisesinc.com. Our team will reach out shortly.";
+          }
+          form.reset();
+        } else {
+          // Fallback to standard POST if first-time activation is required
+          form.submit();
+        }
+      } catch (err) {
+        // Fallback to standard form POST so submission never fails
+        form.submit();
+      } finally {
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = originalText;
+          btn.style.background = "";
+          btn.style.borderColor = "";
+        }, 7000);
+      }
     });
   });
 });
